@@ -1,0 +1,592 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* 先隐藏原滚动条 */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* hover时显色 */
+.container:hover ::-webkit-scrollbar-thumb {
+    /* background: #3498db; */
+    background: #fcbc6d;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: #3498db; */
+    -webkit-box-shadow:  #fcbc6d;
+    /* box-shadow: #3498db; */
+    box-shadow:  #fcbc6d;
+    /* border-radius: #3498db; */
+    border-radius:  #fcbc6d;
+}
+
+/* 滚动条滑块 */
+/* 默认时隐藏*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+    box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+    background: transparent;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /* padding-top: 20px; */
+    /* 居中对齐 */
+    align-items: flex-start;
+    /* 居中对齐 */
+    background-color: #fff;
+}
+
+.left-sidebar {
+    width: 22%;
+    height: 94.4vh;
+    padding: 0 20px;
+<<<<<<< HEAD
+    margin-top: 52px;
+=======
+    margin-top: 64px;
+>>>>>>> show
+    border-radius: 5px;
+    overflow-y: auto;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.center-container {
+    display: flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    
+    align-items: center;
+<<<<<<< HEAD
+    width: 50%;
+}
+
+.right-sidebar {
+    width: 25%;
+    height: 89vh;
+    margin-top: 52px;
+=======
+    width: 56%;
+}
+
+.right-sidebar {
+    width: 22%;
+    height: 89vh;
+    margin-top: 64px;
+>>>>>>> show
+    padding: 0 20px;
+    border-radius: 5px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+<<<<<<< HEAD
+    justify-content: flex-start;
+=======
+    /* justify-content: flex-start; */
+>>>>>>> show
+}
+
+.left_top {
+    height: 89vh;
+    padding: 10px;
+    border-style: solid;
+    border-color: #3f42429d;
+    border-width: 2px;
+    border-radius: 5px;
+    /* overflow-y: auto; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.left_bottom {
+    height: 89vh;
+    padding: 10px;
+    border-style: solid;
+    border-color: #3f42429d;
+    border-width: 2px;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.right_top {
+    /* height: 50%; */
+    padding: 10px;
+    border-style: solid;
+
+    border-color: #3f42429d;
+    border-width: 2px;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.right_bottom {
+    height: 60%;
+    padding: 10px;
+    border-style: solid;
+    border-color: #3f42429d;
+    border-width: 2px;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    height: 40%;
+    padding: 10px;
+    border-style: solid;
+    margin-top: 10px;
+    border-color: #3f42429d;
+    border-width: 2px;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.begin-design {
+    height: 20%;
+}
+.container-5W1H {
+    height: 70%;
+    overflow-y: auto;
+    padding: 0 6px 0 0;
+}
+
+.fbs-button-container {
+    margin-top: auto;
+}
+
+.image-container {
+    height: 40%;
+    padding: 10px;
+    border-style: solid;
+    margin-top: 10px;
+    border-color: #3f42429d;
+    border-width: 2px;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.begin-design {
+    height: 20%;
+}
+.container-5W1H {
+    height: 60%;
+    overflow-y: auto;
+    padding: 0 6px 0 0;
+}
+
+.fbs-button-container {
+    margin-top: auto;
+}
+
+.prompt-textarea {
+    width: 100%;
+    height: 70px;
+    margin: 2px auto;
+    resize: none;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid;
+    border-color: #fff7ec;
+    border-radius: 5px;
+    background: #fff7ec;
+}
+
+.result-textarea {
+    width: 100%;
+    margin: 0 auto;
+    resize: none;
+    height: 30%;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.button-container.fbs-kansei-select {
+    width: 100%;
+    /* height: 10%; */
+    margin: 0 0 10px 0;
+    justify-content: center;
+}
+
+.button-container.fbs-kansei-select > button {
+<<<<<<< HEAD
+    width: 200px;
+
+    margin: 0 10px 0 10px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#fbs-button, #kansei-button {
+    background-color: #fff;
+    color: black;
+    border:  1px solid #ffa63b;
+    border-radius: 5px;
+
+}
+
+#fbs-button.active, #kansei-button.active {
+    background-color: #ffa63b;
+=======
+    width: 285px;
+
+    margin: 0 10px 0 10px;
+    padding: 10px;
+    font-size: 26px;
+}
+
+#fbs-button {
+    background-color: #fff;
+    color: black;
+    border:  2px solid #ffa63b;
+    border-radius: 5px;
+
+}
+
+#kansei-button {
+    background-color: #fff;
+    color: black;
+    border:  2px solid #81AED8;
+    border-radius: 5px;
+
+}
+
+#fbs-button.active{
+    background-color: #ffa63b;
+    color: #fff;
+}
+
+ #kansei-button.active {
+    background-color: #81AED8;
+>>>>>>> show
+    color: #fff;
+}
+
+
+
+.mindmap-container {
+    width: 100%;
+    height: 90vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.answer {
+    width: 100%;
+    resize: none;
+    margin: 2px auto;
+}
+
+textarea {
+    width: 100%;
+    height: 70px;
+    margin: 2px auto;
+    resize: none;
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid;
+    border-color: #fff7ec;
+    border-radius: 5px;
+    background: #fff7ec;
+}
+
+#fbs-mindmap {
+    width: 100%;
+    height: 89vh;
+    border: solid 1px #e6e6e6;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+#kansei-mindmap {
+    width: 100%;
+    height: 89vh;
+    border: solid 1px #e6e6e6;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.node {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid #ccc;
+    list-style-type: none;
+    position: relative;
+    margin: auto;
+}
+
+.node:before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    border-top: 1px solid #ccc;
+    height: 20px;
+    width: 20px;
+}
+
+.expandable:before {
+    content: "+";
+    position: absolute;
+    left: -10px;
+    top: 0;
+    color: #666;
+    cursor: pointer;
+}
+
+.expandable.collapsed:before {
+    content: "-";
+}
+
+.label {
+    display: inline-block;
+    margin-left: 5px;
+    color: #333;
+    cursor: pointer;
+}
+
+.label:before {
+    content: "•";
+    margin-right: 5px;
+    color: #999;
+}
+
+.gray-line {
+    border-color: gray;
+  }
+
+.question-container {
+    margin-bottom: 10px;
+}
+
+.question-box {
+    display: flex;
+    justify-content: space-between;
+    /* align-items:center */
+    align-items: center
+}
+
+.label-5W1H {
+    font-size: 20px;
+    font-weight: 100;
+    color: #725a3f
+
+}
+
+.kanseibox-container {
+    font-size: 20px;
+    font-weight: 100;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: #725a3f
+}
+
+.description-5W1H {
+    font-size: 16px;
+    color: #666;
+}
+
+.answer-5w1h {
+    width: 100%;
+    height: 70px;
+    
+}
+
+#design-problem {
+    height: 70px;
+}
+
+#design-concept {
+    height: 120px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.button-container > button {
+    border: none;
+    padding: 10px 20px;
+    background-color: #ffa63b;
+    width: 100%;
+    color: white;
+    font-size: 22px;
+    font-weight: bolder;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+#behaviors-generate, #sructures-generate {
+    width: 48%;
+}
+
+  /* 鼠标悬停时变换背景颜色 */
+.button-container > button:hover {
+    background-color: #fcbc6d;
+}
+
+
+.headline {
+    margin: 0 0 15px 0;
+<<<<<<< HEAD
+    font-size: 20px;
+=======
+    font-size: 22px;
+>>>>>>> show
+}
+
+.kansei-scheme-textarea {
+    height: 80px;
+}
+
+#kansei-words-n, #kansei-words-a {
+    height: 80px;
+}
+
+.selected {
+    background-color: #FCBC6D;  /* 你可以选用其他颜色 */
+}
+
+
+
+
+.image-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;  /* 修改为flex-start，以便容器内的项目从顶部开始排列 */
+    flex-wrap: wrap;  /* 允许多行 */
+    width: 100%;
+    overflow-y: auto;  /* 允许垂直滚动 */
+}
+
+.image-box > img {
+    margin: 10px;
+    flex: 0 0 calc(40% - 20px);  /* 无论容器宽度如何，每张图片都尝试占据50%（减去20px的边距） */
+    max-height: 105px;  /* 设置最大高度以适应容器高度，保留一些边距 */
+    object-fit: cover;  /* 保持图片的纵横比 */
+}
+
+.kansei-ul {
+    padding-inline-start: 15px;
+<<<<<<< HEAD
+=======
+    font-size: 18px;
+>>>>>>> show
+}
+
+.kansei-ul > li {
+    margin: 7px 0;
+    line-height: 1.4;
+}
+
+.description-kansei {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.description-kansei > p {
+    margin: 2px 0;
+<<<<<<< HEAD
+=======
+    font-size: 18px;
+>>>>>>> show
+}
+
+#contextMenu {
+    background-color: #fff;
+    border: 1px solid #ffa63b;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+#contextMenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#contextMenu ul li {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#contextMenu ul li:hover {
+    background-color: #fff7ec;
+}
+
+.left_bottom > .button-container {
+    /* margin-bottom: -10px; */
+    margin-top: auto;
+<<<<<<< HEAD
+=======
+}
+
+.label-kansei {
+    background-color: #e5f1fc;
+    border-radius: 5px;
+    font-weight: 100;
+    padding: 5px;
+    color: #324353
+}
+
+.right_bottom > .button-container {
+    margin-top: auto;
+} 
+
+#kansei-words-n, #kansei-words-a, #shape-answer, #color-answer, #texture-answer {
+    border-color: #dfeaf5;
+    background: #dfeaf5;
+
+}
+
+#kansei-words, #image-generate {
+    background-color: #81AED8;
+}
+
+.kanseibox-container-label-font-color {
+    color: #324353;
+>>>>>>> show
+}

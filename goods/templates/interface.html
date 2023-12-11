@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Map</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      justify-content: center; /* 居中对齐 */
+      align-items: center; /* 居中对齐 */
+      background-color: #fff;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+      width: 25%;
+      height: 100vh;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 4px;
+      margin-right: 20px;
+      overflow-y: auto;
+    }
+
+    .prompt-textarea {
+      width: 100%;
+      margin: 0 auto;
+      resize: none;
+      height: 8em;
+      font-size: 14px;
+      padding: 4px;
+    }
+    .result-textarea {
+      width: 100%;
+      margin: 0 auto;
+      resize: none;
+      height: 30%;
+      font-size: 14px;
+      padding: 4px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .answer {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    textarea {
+      width: 100%;
+      resize: none;
+      height: 4em;
+      font-size: 14px;
+      padding: 4px;
+    }
+
+    #app {
+      width: 50%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+      overflow-y: auto;
+    }
+
+    .node {
+      margin-left: 20px;
+      padding-left: 20px;
+      border-left: 1px solid #ccc;
+      list-style-type: none;
+      position: relative;
+      margin:auto;
+    }
+
+    .node:before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      border-top: 1px solid #ccc;
+      height: 20px;
+      width: 20px;
+    }
+
+    .expandable:before {
+      content: "+";
+      position: absolute;
+      left: -10px;
+      top: 0;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .expandable.collapsed:before {
+      content: "-";
+    }
+
+    .label {
+      display: inline-block;
+      margin-left: 5px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .label:before {
+      content: "•";
+      margin-right: 5px;
+      color: #999;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-sidebar">
+      
+      <form action="" method="POST">
+          {% csrf_token %}
+          <textarea type="text" id="message" name=
+              "message" class="prompt-textarea" placeholder="输入设计问题" :style="{width:'100%',height:'20px',resize:'none'}"  @keydown.enter="linefeed_" @click="sendMessage"></textarea>
+          <button type="submit" class="send-button" @click="sendMessage">Send</button>
+      </form>
+
+      <div class="question">
+        <br>
+        <label>Question 1: 谁将使用这个产品?</label>
+        <div class="answer">
+            {% if interface1 %}
+                <li @dblclick="editMessage(0)">
+                <!--<div id="wrap">--><!--<textarea id="wrap">{{question}}</textarea><!--</div>-->
+                    <!--{{message }}-->
+                    <textarea id="wrap">{{interface1}}</textarea>
+                <!--<p class="text" v-html="requestText">data(){return}requestText:""}-->
+                </li>
+            {% endif %}
+        </div>
+      </div>
+      <div class="question">
+        <label>Question 2: 用户将使用这个产品来做什么?<br></label>
+        <div class="answer">
+            {% if interface2 %}
+                <li @dblclick="editMessage(0)">
+                    <textarea id="wrap">{{interface2}}</textarea>
+                </li>
+            {% endif %}
+        </div>
+      </div>
+      <div class="question">
+        <label>Question 3: 什么时候使用这个产品?<br></label>
+        <div class="answer">
+            {% if interface3 %}
+                <li @dblclick="editMessage(0)">
+                    <textarea id="wrap">{{interface3}}</textarea>
+                </li>
+            {% endif %}
+        </div>
+      </div>
+      <div class="question">
+        <label>Question 4: 用户为什么要使用这个产品?<br></label>
+        <div class="answer">
+            {% if interface4 %}
+                <li @dblclick="editMessage(0)">
+                    <textarea id="wrap">{{interface4}}</textarea>
+                </li>
+            {% endif %}
+        </div>
+      </div>
+      <div class="question">
+        <label>Question 5: 这个产品将在哪里被使用?<br></label>
+        <div class="answer">
+            {% if interface5 %}
+                <li @dblclick="editMessage(0)">
+                    <textarea id="wrap">{{interface5}}</textarea>
+                </li>
+            {% endif %}
+        </div>
+      </div>
+      <div class="question">
+        <label>Question 6: 这个产品将如何被使用?<br></label>
+        <div class="answer">
+            {% if interface6 %}
+                <li @dblclick="editMessage(0)">
+                    <textarea id="wrap">{{interface6}}</textarea>
+                </li>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div id="app">
+        <mind-map></mind-map>
+    </div>
+
+    <div class="right-sidebar">
+      <label>产品描述</label>
+      <textarea class="result-textarea" placeholder="正向提示词">{{interface}}</textarea>
+      <textarea class="result-textarea" placeholder="反向提示词"></textarea>
+      {% if interface %}
+          <div style="width:500px;height:500px;display:flex;justify-content:center;align-items:center">
+          <img src="{%static 'js/output.png'%}" width="100%" height="auto" title="产品效果图" >
+          </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <template id="tree-node">
+    <li :class="{ 'node': true, 'expandable': hasChildren, 'collapsed': node.collapsed }">
+      <span class="expand-icon" @click="toggleNode" v-if="hasChildren"></span>
+      <span class="label" @click="toggleNode">{{ node.label }}</span>
+      <ul v-if="hasChildren && !node.collapsed">
+        <tree-node v-for="childNode in node.children" :node="childNode" :key="childNode.label"></tree-node>
+      </ul>
+    </li>
+  </template>
+
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  <script src="{%static 'js/jsmind.js'%}"></script>
+  <script src="{%static 'js/jsmind.draggable.js'%}"></script>
+  <link type="text/css" rel="stylesheet" href="{%static 'js/jsmind.css'%}" />
+  <script>
+    Vue.component('mind-map', {
+      template: `
+        <div class="mindmap-container" ref="mindmapContainer">
+      `,
+      // <button class="send-button" @click="deleteNode()">删除节点</button></div>
+      mounted() {
+        setTimeout(() => {
+          this.initMindMap();
+        }, 100);
+      },
+      methods: {
+        initMindMap() {
+          const mind = {
+            meta: {
+              name: '思维导图',
+            },
+            format: 'node_array',
+            data: [
+              { id: 'root', isroot: true, topic: '主题', expanded: true },
+              { id: 'node1', parentid: 'root', topic: '节点1' },
+              { id: 'node2', parentid: 'root', topic: '节点2' },
+              { id: 'node3', parentid: 'node1', topic: '子节点1' },
+              { id: 'node4', parentid: 'node1', topic: '子节点2' },
+              { id: 'node5', parentid: 'node2', topic: '子节点3' },
+              // 添加更多节点...
+            ],
+          };
+
+          const options = {
+            container: this.$refs.mindmapContainer,
+            editable: true,
+          };
+
+          this.jsMindInstance = new jsMind(options);
+          this.jsMindInstance.show(mind);
+        },
+        deleteNode() {
+          const selectedNode = this.jsMindInstance.get_selected_node(); // 获取当前选中的节点
+          if (selectedNode) {
+            const nodeId = selectedNode.id;
+            this.jsMindInstance.remove_node(nodeId); // 删除选中节点
+          }
+        },
+      },
+    });
+      new Vue({
+        el: '#app',
+      });
+    </script>
+  
+    <style>
+      .mindmap-container {
+        width: 100%;
+        height: 500px;
+      }
+    </style>
+</body>
+
+</html>

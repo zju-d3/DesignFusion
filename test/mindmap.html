@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jsMind</title>
+    <link type="text/css" rel="stylesheet" href="../goods/static/plugins/css/jsmind.css" />
+    <style type="text/css">
+        #jsmind_container {
+            width: 800px;
+            height: 500px;
+            border: solid 1px #ccc;
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="jsmind_container"></div>
+
+    <div class="right_bottom">
+        <div class="headline"> Design Scheme - Kansei</div>
+
+        <div class="question-container">
+            <div class="question-box">
+                <div class="label-5W1H" data-label="shape">Shape</div>
+            </div>
+
+            <div class="answer-box">
+                <textarea id="shape-answer" class="kansei-scheme-textarea"
+                    placeholder="Enter your design prompt here."></textarea>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="question-box">
+                <div class="label-5W1H" data-label="color">Color</div>
+            </div>
+
+            <div class="answer-box">
+                <textarea id="color-answer" class="kansei-scheme-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="question-box">
+                <div class="label-5W1H" data-label="texture">Texture</div>
+            </div>
+
+            <div class="answer-box">
+                <textarea id="texture-answer" class="kansei-scheme-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button id="kansei-words">Generate</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://jsd.onmicrosoft.cn/npm/jsmind@0.6.4/es6/jsmind.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsmind/es6/jsmind.draggable-node.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsmind/es6/jsmind.screenshot.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        var mind = {
+            "meta": {
+                "name": "jsMind remote",
+                "author": "hizzgdev@163.com",
+                "version": "0.2"
+            },
+            "format": "node_tree",
+            "data": {
+                "id": "root", "topic": "jsMind", "children": [
+                    {
+                        "id": "easy", "topic": "Easy", "direction": "left", "children": [
+                            { "id": "easy1", "topic": "Easy to show" },
+                            { "id": "easy2", "topic": "Easy to edit" },
+                            { "id": "easy3", "topic": "Easy to store" },
+                            { "id": "easy4", "topic": "Easy to embed" }
+                        ]
+                    },
+                    {
+                        "id": "open", "topic": "Open Source", "direction": "right", "children": [
+                            { "id": "open1", "topic": "on GitHub" },
+                            { "id": "open2", "topic": "BSD License" }
+                        ]
+                    },
+                    {
+                        "id": "powerful", "topic": "Powerful", "direction": "right", "children": [
+                            { "id": "powerful1", "topic": "Base on Javascript" },
+                            { "id": "powerful2", "topic": "Base on HTML5" },
+                            { "id": "powerful3", "topic": "Depends on you" }
+                        ]
+                    },
+                    {
+                        "id": "other", "topic": "test node", "direction": "left", "children": [
+                            { "id": "other1", "topic": "I'm from local variable" },
+                            { "id": "other2", "topic": "I can do everything" }
+                        ]
+                    }
+                ]
+            }
+        };
+        var options = {
+            container: 'jsmind_container',
+            editable: true,
+            theme: 'orange'
+        };
+        var jm = new jsMind(options);
+        // show it
+        jm.show(mind);
+
+
+        // 点击事件监听
+        jm.add_event_listener(function (type, o) {
+            if (type === jsMind.event_type.click) {
+                const nodeId = o.node.id;
+                const topic = o.node.topic;
+
+            }
+        });
+
+
+        // 记录当前选中的label-5W1H内容
+        var selectedLabel = "shape"; // 默认选中shape
+
+        // 点击label-5W1H更改当前选中内容
+        document.querySelectorAll('.label-5W1H').forEach((label) => {
+            label.addEventListener('click', function () {
+                selectedLabel = this.getAttribute('data-label');
+            });
+        });
+
+        // 按下command + G，将选中的节点内容复制到对应的<textarea>
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'g' && e.metaKey) {
+                const selectedNode = jm.get_selected_node(); // 获取选中的节点
+                if (selectedNode) {
+                    const topic = selectedNode.topic;
+                    document.getElementById(`${selectedLabel}-answer`).value = topic;
+                }
+            }
+        });
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

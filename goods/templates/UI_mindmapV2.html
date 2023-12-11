@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Map</title>
+  <!-- <base href="/"> -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  <link type="text/css" rel="stylesheet" href="{% static 'plugins/css/jsmind.css'%}" />
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-sidebar">
+      <div class="left_top">
+
+        <form action="" id="design_problem" method="POST">
+          {% csrf_token %}
+          <div style="border: {border-style: solid, border-width: 1px, border-color: #3f4242 }">
+            <p style="line-height: 1em;">
+              Design Concept<br>
+            </p>
+            <textarea style="background-color: #fff7ec" type="text" id="message" name="message"
+              onkeydown='countChar("message","counter");' onkeyup='countChar("message","counter");'
+              class="prompt-textarea" placeholder="Enter your design prompt here."
+              :style="{ width: '95.5%', height: '50px', resize: 'none'}" @keydown.enter="linefeed_"
+              @click="sendMessage">{{message}}</textarea>
+            <font color="#432876" size="2px"><span id="counter">0</span>/100</font>
+            <div style="text-align: right">
+              <button type="submit" class="send-button" style="background-color: #ffa63b; color: black;"
+                @click="sendMessage">Confirm</button><br />
+            </div>
+          </div>
+        </form>
+
+        <hr class="gray-line">
+        <div class="container-5W1H">
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">Who</div>
+              <div class="description-5W1H">Who will be using this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="who" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">What</div>
+              <div class="description-5W1H">What do users do with this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="what" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">When</div>
+              <div class="description-5W1H">When do users use this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="when" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">Why</div>
+              <div class="description-5W1H">Why do users use this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="why" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">Where</div>
+              <div class="description-5W1H">Where do users do with this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="where" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">How</div>
+              <div class="description-5W1H">How do users do with this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="how" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+        </div>
+        <div class="button-container">
+          <button id="send-5w1h">Functions Generate</button>
+        </div>
+
+      </div>
+
+      <div class="left_bottom hidden">
+        <div class="headline"> Kansei Words</div>
+
+        <div class="question-container">
+          <div class="question-box">
+            <div class="label-5W1H">Nouns</div>
+            <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+          </div>
+
+          <div class="answer-box">
+            <textarea id="kansei-words-n" class="answer-5w1h"></textarea>
+          </div>
+
+        </div>
+
+        <div class="question-container">
+          <div class="question-box">
+            <div class="label-5W1H">Adjectives</div>
+            <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+          </div>
+
+          <div class="answer-box">
+            <textarea id="kansei-words-a" class="answer-5w1h"></textarea>
+          </div>
+
+        </div>
+
+        <div class="button-container">
+          <button id="kansei-words">Generate</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="center-container">
+      <div class="button-container fbs-kansei-select">
+        <button id="fbs-button" class="active">FBS Design</button>
+        <button id="kansei-button">Kansei Design</button>
+      </div>
+      <div class="mindmap-container">
+        <div id="fbs-mindmap">
+          <!-- <mind-map></mind-map> -->
+        </div>
+
+        <div id="kansei-mindmap" class="hidden">
+
+        </div>
+      </div>
+      <div class="image-container hidden">
+
+      </div>
+    </div>
+
+    <div class="right-sidebar">
+      <div class="right_top">
+        <div class="headline"> Design Concept</div>
+
+        <div class="question-container">
+          <div class="question-box">
+            <div class="kanseibox-container" data-label="design-concept">My design</div>
+
+          </div>
+
+          <div class="answer-box">
+            <textarea id="design-concept-answer" class="kansei-scheme-textarea"
+              placeholder="Enter your design concept here."></textarea>
+          </div>
+
+        </div>
+
+        <div class="button-container">
+          <button id="behaviors-generate">Behaviors Generate</button>
+          <button id="sructures-generate">Structures Generate</button>
+        </div>
+
+
+      </div>
+
+      <div class="right_bottom hidden">
+        <div class="headline"> Design Scheme - Kansei</div>
+
+        <div class="question-container">
+          <div class="question-box">
+            <div class="kanseibox-container" data-label="shape">Shape</div>
+            <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+          </div>
+
+          <div class="answer-box">
+            <textarea id="shape-answer" class="kansei-scheme-textarea"
+              placeholder="Enter your design prompt here."></textarea>
+          </div>
+
+        </div>
+
+        <div class="question-container">
+          <div class="question-box">
+            <div class="kanseibox-container" data-label="color">Color</div>
+            <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+          </div>
+
+          <div class="answer-box">
+            <textarea id="color-answer" class="kansei-scheme-textarea"></textarea>
+          </div>
+
+        </div>
+
+        <div class="question-container">
+          <div class="question-box">
+            <div class="kanseibox-container" data-label="texture">Texture</div>
+            <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+          </div>
+
+          <div class="answer-box">
+            <textarea id="texture-answer" class="kansei-scheme-textarea"></textarea>
+          </div>
+
+        </div>
+
+        <div class="button-container">
+          <button id="image-generate">Image Generate</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="{%static 'plugins/js/jquery-3.6.1.min.js' %}"></script>
+
+  <script type="text/javascript" src="https://jsd.onmicrosoft.cn/npm/jsmind@0.6.4/es6/jsmind.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/jsmind@0.6.4/es6/jsmind.js"></script>
+
+  <script type="text/javascript" src="https://unpkg.com/jsmind@0.6.4/es6/jsmind.draggable-node.js"></script>
+  <!-- <script src="{%static 'plugins/js/jsmind.js'%}"></script> -->
+  <!-- <script src="{%static 'plugins/js/jsmind.draggable.js'%}"></script> -->
+  <script src="{%static 'js/pageshow.js'%}"></script>
+  <script src="{%static 'js/mindmap.js'%}"></script>
+  <script src="{%static 'js/map2text.js'%}"></script>
+  <script src="{%static 'js/jsfbs.js'%}"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,355 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Map</title>
+  <!-- <base href="/"> -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  <link type="text/css" rel="stylesheet" href="{% static 'plugins/css/jsmind.css'%}" />
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-sidebar">
+
+      <div class="left_top">
+
+
+        <div class="begin-design">
+<<<<<<< HEAD
+          <div class="headline"> Design Concept</div>
+=======
+          <div class="headline"> Design Problem</div>
+>>>>>>> show
+          <textarea id="design-problem" placeholder="Enter Design Problem here."></textarea>
+          <!-- <font color="#432876" size="2px"><span id="counter">0</span>/100</font> -->
+
+          <div class="button-container">
+            <button id="design-begin">Generate Requirements </button>
+          </div>
+
+        </div>
+
+
+
+        <hr class="gray-line">
+        <div class="container-5W1H">
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">Who</div>
+              <div class="description-5W1H">Who will be using this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="who" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">What</div>
+              <div class="description-5W1H">What do users do with this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="what" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">When</div>
+              <div class="description-5W1H">When do users use this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="when" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">Why</div>
+              <div class="description-5W1H">Why do users use this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="why" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">Where</div>
+              <div class="description-5W1H">Where do users do with this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="where" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+              <div class="label-5W1H">How</div>
+              <div class="description-5W1H">How do users do with this product?</div>
+            </div>
+
+            <div class="answer-box">
+              <textarea id="how" class="answer-5w1h"></textarea>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="fbs-button-container">
+          <div class="button-container">
+            <button id="send-5w1h">Generate Functions </button>
+          </div>
+
+          <div class="button-container">
+            <button id="behaviors-generate">Generate Behaviors</button>
+            <button id="sructures-generate">Generate Structures </button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="left_bottom hidden">
+        <div class="headline"> Kansei Words</div>
+
+        <div class="question-container">
+          <div class="question-box">
+<<<<<<< HEAD
+            <div class="label-5W1H">Nouns</div>
+=======
+            <div class="label-5W1H label-kansei">Nouns</div>
+>>>>>>> show
+          </div>
+
+          <div class="description-kansei">
+            <p>You can brainstorm your inspiration resources from the following aspects:</p>
+            <ul class="kansei-ul">
+              <li><strong>Animate</strong> (e.g., tree, dolphin, …)</li>
+              <li><strong>Inanimate</strong> (e.g., cloud, wave, …)</li>
+              <li><strong>Abstract</strong> (e.g., Cyberpunk, Modernism, …)</li>
+            </ul>
+          </div>
+
+          <div class="answer-box">
+            <textarea id="kansei-words-n" class="answer-5w1h" placeholder="Enter Kansei Words here."></textarea>
+          </div>
+
+        </div>
+
+        <div class="question-container">
+          <div class="question-box">
+<<<<<<< HEAD
+            <div class="label-5W1H">Adjectives</div>
+=======
+            <div class="label-5W1H label-kansei">Adjectives</div>
+>>>>>>> show
+          </div>
+
+          <div class="description-kansei">
+            <p>You can express your expected feelings from the following aspects:</p>
+            <ul class="kansei-ul">
+              <li><strong>Physiological</strong> (e.g., Warm/Cold, Heavy/Light, Smooth/Rough, …)</li>
+              <li><strong>Psychological</strong> (e.g., Strong/Weak, Tense/Relaxed, …)</li>
+              <li><strong>Cultural</strong> (e.g., Modern, Elegant, Cute, …)</li>
+              <li><strong>Physical</strong> (e.g., Bright/Dark, Sharp/Round, Big/Small, …)</li>
+            </ul>
+          </div>
+
+          <div class="answer-box">
+            <textarea id="kansei-words-a" class="answer-5w1h" placeholder="Enter Kansei Words here."></textarea>
+          </div>
+
+        </div>
+
+        <div class="button-container">
+          <button id="kansei-words">Generate Solutions</button>
+
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+
+    <div class="center-container">
+      <div class="button-container fbs-kansei-select">
+        <button id="fbs-button" class="active">Structure Design</button>
+        <button id="kansei-button">Appearance Design</button>
+      </div>
+      <div class="mindmap-container">
+        <div id="fbs-mindmap">
+          <!-- <mind-map></mind-map> -->
+        </div>
+
+        <div id="kansei-mindmap" class="hidden">
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="right-sidebar">
+      <div class="right_top">
+<<<<<<< HEAD
+        <div class="headline"> Design Concept</div>
+=======
+        <div class="headline"> Design Solution</div>
+>>>>>>> show
+
+
+        <div class="map2text-container">
+          <div class="structures-container">
+            <div class="question-container">
+              <div class="question-box">
+<<<<<<< HEAD
+                <div class="kanseibox-container" data-label="design-concept1">Structures 1</div>
+=======
+                <div class="kanseibox-container" data-label="design-concept1">Structure 1</div>
+>>>>>>> show
+
+              </div>
+
+              <div class="answer-box">
+                <textarea id="design-concept1-answer" class="kansei-scheme-textarea"
+                  placeholder="Enter your design concept here."></textarea>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+<<<<<<< HEAD
+        <div class="button-container">
+=======
+        <div class="button-container generate-img-container">
+>>>>>>> show
+          <button id="add-structure">Add New Structure</button>
+        </div>
+
+
+      </div>
+
+      <div class="right_bottom hidden">
+        <div class="headline"> Design Concept</div>
+
+        <div class="map2text-container">
+          <div class="question-container">
+            <div class="question-box">
+<<<<<<< HEAD
+              <div class="kanseibox-container" data-label="shape">Shape</div>
+=======
+              <div class="kanseibox-container kanseibox-container-label-font-color" data-label="shape">Shape</div>
+>>>>>>> show
+              <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+            </div>
+
+            <div class="answer-box">
+              <textarea id="shape-answer" class="kansei-scheme-textarea"
+                placeholder="Enter your design concept here."></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+<<<<<<< HEAD
+              <div class="kanseibox-container" data-label="color">Color</div>
+=======
+              <div class="kanseibox-container kanseibox-container-label-font-color" data-label="color">Color</div>
+>>>>>>> show
+              <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+            </div>
+
+            <div class="answer-box">
+              <textarea id="color-answer" class="kansei-scheme-textarea"
+                placeholder="Enter your design concept here."></textarea>
+            </div>
+
+          </div>
+
+          <div class="question-container">
+            <div class="question-box">
+<<<<<<< HEAD
+              <div class="kanseibox-container" data-label="texture">Texture</div>
+=======
+              <div class="kanseibox-container kanseibox-container-label-font-color" data-label="texture">Texture</div>
+>>>>>>> show
+              <!-- <div class="description-5W1H">What do users do with this product?</div> -->
+            </div>
+
+            <div class="answer-box">
+              <textarea id="texture-answer" class="kansei-scheme-textarea"
+                placeholder="Enter your design concept here."></textarea>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="button-container">
+<<<<<<< HEAD
+          <button id="image-generate">Image Generate</button>
+=======
+          <button id="image-generate">Generate Images</button>
+>>>>>>> show
+        </div>
+      </div>
+
+      <div class="image-container hidden">
+        <div class="headline"> Appearance Images</div>
+<<<<<<< HEAD
+        <div class="image-box">
+          <!-- <img src="{%static 'img/output/tjFpUyubS.png'  %}" alt="">
+          <img src="{%static 'img/output/tjFpUyubS.png'  %}" alt="">
+          <img src="{%static 'img/output/tjFpUyubS.png'  %}" alt="">
+          <img src="{%static 'img/output/tjFpUyubS.png'  %}" alt=""> -->
+=======
+        <div class="image-box hidden">
+          <img src="{%static 'img/output/541f6a20-42ff-43ee-baaa-6c4f67ac417e.png'  %}" alt="">
+          <img src="{%static 'img/output/out-0.png'  %}" alt="">
+          <img src="{%static 'img/output/out-2.png'  %}" alt="">
+          <img src="{%static 'img/output/out-3 (1).png'  %}" alt="">
+>>>>>>> show
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="{%static 'plugins/js/jquery-3.6.1.min.js' %}"></script>
+
+  <script type="text/javascript" src="https://jsd.onmicrosoft.cn/npm/jsmind@0.6.4/es6/jsmind.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/jsmind@0.6.4/es6/jsmind.js"></script>
+
+  <script type="text/javascript" src="https://unpkg.com/jsmind@0.6.4/es6/jsmind.draggable-node.js"></script>
+  <!-- <script src="{%static 'plugins/js/jsmind.js'%}"></script> -->
+  <!-- <script src="{%static 'plugins/js/jsmind.draggable.js'%}"></script> -->
+  <script src="{%static 'js/untils.js'%}"></script>
+  <script src="{%static 'js/pageshow.js'%}"></script>
+  <script src="{%static 'js/mindmap.js'%}"></script>
+  <script src="{%static 'js/map2text.js'%}"></script>
+  <script src="{%static 'js/jsfbs.js'%}"></script>
+
+</body>
+
+</html>

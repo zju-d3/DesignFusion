@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="left-sidebar">
+        <div class="left_top">left-top</div>
+        <div class="left_bottom">left_bottom</div>
+    </div>
+
+    <div class="center-container">
+        <div class="button-container fbs-kansei-select">
+            <button id="fbs-button">FBS Design</button>
+            <button id="kansei-button">Kansei Design</button>
+        </div>
+        <div class="mindmap-container">
+            <div id="fbs-mindmap">
+                fbs
+            </div>
+
+            <div id="kansei-mindmap">
+                kansei
+            </div>
+        </div>
+    </div>
+
+    <div class="right-sidebar">
+        <div class="right_top">right_top</div>
+        <div class="right_bottom">right_bottom</div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // 获取所有需要切换的元素
+            const $leftTop = $(".left_top");
+            const $leftBottom = $(".left_bottom");
+            const $fbsMindmap = $("#fbs-mindmap");
+            const $kanseiMindmap = $("#kansei-mindmap");
+            const $rightTop = $(".right_top");
+            const $rightBottom = $(".right_bottom");
+
+            // FBS Design 按钮点击事件
+            $("#fbs-button").click(function () {
+                // 隐藏或显示相关元素
+                $leftBottom.addClass("hidden");
+                $kanseiMindmap.addClass("hidden");
+                $rightBottom.addClass("hidden");
+
+                $leftTop.removeClass("hidden");
+                $fbsMindmap.removeClass("hidden");
+                $rightTop.removeClass("hidden");
+            });
+
+            // Kansei Design 按钮点击事件
+            $("#kansei-button").click(function () {
+                // 隐藏或显示相关元素
+                $leftTop.addClass("hidden");
+                $fbsMindmap.addClass("hidden");
+                $rightTop.addClass("hidden");
+
+                $leftBottom.removeClass("hidden");
+                $kanseiMindmap.removeClass("hidden");
+                $rightBottom.removeClass("hidden");
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

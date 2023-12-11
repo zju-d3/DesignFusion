@@ -1,0 +1,10 @@
+{
+    "walking assistance function": {
+        "support and balance": "对应Behavior",
+        "User-adjustable cane height": "对应Behavior"
+        
+    },
+    "hearing aid function": {
+        "listen to ambient sounds":"对应Behavior"
+    }
+}
